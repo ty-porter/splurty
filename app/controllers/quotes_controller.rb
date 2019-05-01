@@ -1,6 +1,14 @@
 class QuotesController < ApplicationController
   def index
     @quote = Quote.order("RANDOM()").first
+
+    respond_to do |format|
+
+      format.html
+      format.json { render json: @quote }
+    
+    end
+
   end
 
   def create
