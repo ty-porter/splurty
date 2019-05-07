@@ -1,4 +1,7 @@
 class QuotesController < ApplicationController
+
+  protect_from_forgery prepend: true
+
   def index
     @quote = Quote.order("RANDOM()").first
 
