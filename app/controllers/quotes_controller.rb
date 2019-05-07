@@ -19,10 +19,15 @@ class QuotesController < ApplicationController
 
     if @quote.invalid?
       flash[:error] = '<strong>Could not save</strong> the data you entered is invalid.'
-    else
-      render json: @quote, status: :created
     end
-    redirect_to root_path
+
+    respond_to do |format|
+
+      format.html { redirect_to root_path}
+      format.json { render json: @quote, status: :created }
+    
+    end
+
   end
 
   def about
@@ -31,6 +36,6 @@ class QuotesController < ApplicationController
   private
 
   def quote_params
-    params.require(:quote).permit(:saying, :author)
+    params.permit(:saying, :author)
   end
 end
