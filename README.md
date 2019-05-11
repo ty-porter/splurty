@@ -1,24 +1,32 @@
-# README
+# splurty
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Splurty is built in Rails 5.2.1 as part of a project for Vanderbilt University's Coding Bootcamp. It takes user inputs and creates a database of quotes to serve up randomly to users. 
 
-Things you may want to cover:
+On the backend, Splurty can also handle AJAX requests and serve up quotes via a JSON API. [Reactive-Splurty](https://github.com/pawptart/reactive-splurty) uses this to render the same information using ReactJS.
 
-* Ruby version
+See Splurty in action [here](https://splurty-tyler-porter.herokuapp.com). 
 
-* System dependencies
+## Calling the API
 
-* Configuration
+### Retrieving Quotes
+If you'd like to use the API to retrieve quotes, send a GET request to
 
-* Database creation
+```https://splurty-tyler-porter.herokuapp.com/quotes.json```
 
-* Database initialization
+It will return a JSON object that looks similar to the following example:
 
-* How to run the test suite
+```
+{
+    "id": 1,
+    "saying": "A bicycle ride around the world begins with a single pedal stroke.",
+    "author": "Scott Stoll",
+    "created_at": "2019-03-07T03:19:17.780Z",
+    "updated_at": "2019-03-07T03:19:17.780Z"
+}
+``` 
+### Creating Quotes
+Similarly, if you'd like to create a new quote, use a POST request including the `saying` and `author` keys, and Splurty does the rest. 
 
-* Services (job queues, cache servers, search engines, etc.)
+## TODO
 
-* Deployment instructions
-
-* ...
+* Fix the Bootstrap bug causing Splurty to be wider than viewport width.
